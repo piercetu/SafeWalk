@@ -16,16 +16,16 @@ export default class App extends React.Component {
             latitudeDelta: 0.0922,
             longitudeDelta: 0.0421,
           }}
-        />
-          {/* <MapView.Marker
+        >
+          <MapView.Marker
             coordinate={{
-              longitude: 59.3293, 
-              latitude: 18.065
+              longitude: -122.4324, 
+              latitude: 37.78825
             }}
             title = {'My marker title'}
             description = {'marker description'}
-          /> */}
-        {/* </MapView> */}
+          />
+        </MapView>
       </View>
     );
   }
