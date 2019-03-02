@@ -8,23 +8,24 @@ export default class App extends React.Component {
       <View style={styles.container}>
         <Text>Hello</Text>
         
-        <MapView style={styles.map}
-          region = {{
-            latitude: 59.3293,
-            longitude: 18.065,
-            latitudeDelta: 0.1,
-            longitudeDelta: 0.1
+        <MapView
+          style={styles.maps}
+          initialRegion={{
+            latitude: 37.78825,
+            longitude: -122.4324,
+            latitudeDelta: 0.0922,
+            longitudeDelta: 0.0421,
           }}
-        >
-          <MapView.Marker
+        />
+          {/* <MapView.Marker
             coordinate={{
               longitude: 59.3293, 
               latitude: 18.065
             }}
             title = {'My marker title'}
             description = {'marker description'}
-          />
-        </MapView>
+          /> */}
+        {/* </MapView> */}
       </View>
     );
   }
@@ -38,6 +39,7 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
   maps: {
+    borderWidth: 2,
     position: 'absolute',
     top: 0,
     left: 0,
