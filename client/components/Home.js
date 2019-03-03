@@ -1,36 +1,39 @@
 import React,  { Component } from 'react';
 import { View, Text, Button, StyleSheet, TextInput } from 'react-native';
-// import firebase from 'firebase';
-// import config from './firebase';
 
+import Input from './Input';
 
 export default class Home extends Component {
     constructor(props) {
         super(props);
         this.state = {
             phone: "",
-            // destination?
-        }
+            startAddress: "", endAddress: "",
+            startRegion: {}, endRegion: {}
+        };
     }
+
     render() {
         return (
             <View style={styles.container}>
-
-                <TextInput
-                    style={{height: 40}}
-                    placeholder = "Enter Phone Number."
-                    keyboardType = 'number-pad' // FIX LATER
+                <Input
+                    placeholder = "Phone Number"
                     maxLength={10}
-                    onChangeText={(text) => this.setState({text})}
+                    onChangeText={phone => this.setState({phone})}
+                />
+                <Input
+                    placeholder = "Starting Address"
+                    onChangeText={phone => this.setState({phone})}
+                />
+                <Input
+                    placeholder = "Ending Address"
+                    onChangeText={phone => this.setState({phone})}
                 />
 
                 <Button
                     title="Get Started"
                     onPress={() => this.props.navigation.navigate('Map')}
                 />
-
-                
-
           </View>
         );
     }

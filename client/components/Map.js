@@ -119,20 +119,16 @@ const styles = StyleSheet.create({
     // alignItems: 'center',
     // justifyContent: 'center',
   },
-<<<<<<< HEAD
-  // maps: {
-  //   borderWidth: 2,
-  //   position: 'absolute', 
-  //   top: 0,
-  //   left: 0,
-  //   right: 0,
-  //   bottom: 0,
-  //   zIndex: 1,
-  // },
+   maps: {
+    borderWidth: 2,
+    position: 'absolute', 
+    top: 0,
+    left: 0,
+    right: 0,
+    bottom: 0,
+    zIndex: 1,
+  },
   text: {
-=======
-  maps: {
->>>>>>> c3b9d95d323854f9c25b8fba5df7f86fae5b7e5d
     position: 'absolute',
     zIndex: 2,
     top: -5,
