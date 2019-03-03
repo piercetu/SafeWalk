@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { TextInput, View, Text } from 'react-native';
 
 export default class Input extends Component{
-    render(){
+    render() {
         const { label, value, onChangeText, placeholder, secureTextEntry, maxLength, multiline, numberOfLines, editable } = this.props;
         const { containerStyle, inputStyle, labelStyle } = styles;
         return(
