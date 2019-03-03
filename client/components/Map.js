@@ -138,7 +138,6 @@ class Map extends React.Component {
   render() {
     if (this.state.location) {
       let { longitude, latitude } = this.state.location.coords;
-      console.log(this.state);
 
       return (
         <View style={styles.container}>

@@ -1,0 +1,74 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Segoe UI', sans-serif;
+  display: flex;
+    align-items: center;
+    justify-content: center;
+  height: 100vh;
+  margin: 0;
+  background: url('resources/bg.svg');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position-x: 500px; 
+}
+
+.hero {
+  /* border: 5px dashed yellow; */
+  height: 100%;
+  flex: 1;
+  width: 50%;
+}
+
+.hero:first-child {
+  display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    flex-direction: column;
+  padding: 0 5%;
+  max-width: 700px;
+}
+
+.hero h1 {
+  font-weight: bolder;
+  font-size: 44px;
+  margin: 15px 0;
+}
+
+.hero p {
+  color: #033443;
+  font-size: 16px;
+  margin-bottom: 35px;
+
+}
+
+header {
+  display: flex;
+    align-items: center;
+    justify-content: space-between;
+  position: absolute;
+  height: 64px;
+  width: 100vw;
+  right: 0%;
+  padding: 0 4%;
+
+}
+
+#navbar-brand, #navbar-links {
+  display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#navbar-branding img {
+  height: 50px;
+  width: 50px;
+}
+
+#navbar-links a {
+  margin: 0;
+  color: white;
+  text-decoration: none;
+}
