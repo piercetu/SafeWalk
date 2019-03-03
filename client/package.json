@@ -25,5 +25,5 @@
     "babel-preset-expo": "^5.0.0"
   },
   "private": true,
-  "proxy": "http://safewalk.appspot.com"
+  "proxy": "http://localhost:3000"
 }

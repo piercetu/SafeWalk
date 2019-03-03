@@ -18,7 +18,7 @@ class Home extends Component {
     }
 
     static getDerivedStateFromProps(props, state) {
-        if (props.phoneNumber.length || props.startingAddress || props.endingAddress) {
+        if (props.phoneNumber.length && props.startingRegion.latitude && props.endingRegion.latitude) {
             return {
                 redirect: true
             };
@@ -57,17 +57,14 @@ class Home extends Component {
                 <Input
                     placeholder = "Phone Number"
                     maxLength={10}
-                    value={this.props.phone}
                     onChangeText={phone => this.setState({phone})}
                 />
                 <Input
                     placeholder = "Starting Address"
-                    value={this.props.startingAddress}
                     onChangeText={startingAddress => this.setState({startingAddress})}
                 />
                 <Input
                     placeholder = "Ending Address"
-                    value={this.props.endingAddress}
                     onChangeText={endingAddress => this.setState({endingAddress})}
                 />
 
@@ -91,11 +88,13 @@ const styles = StyleSheet.create({
 });
 
 const mapStateToProps = state => {
-    let { startingAddress, endingAddress } = state.map;
+    let { startingRegion, endingRegion } = state.map;
     let { phoneNumber } = state.data;
 
+    console.log(state);
+
     return {
-        phoneNumber, startingAddress, endingAddress
+        phoneNumber, startingRegion, endingRegion
     };
 }
 

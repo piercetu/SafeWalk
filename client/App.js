@@ -24,6 +24,8 @@ export default class App extends React.Component {
 
     this.store = configureStore().store;
     this.persistor = configureStore().persistor;
+
+    console.disableYellowBox = true;
   }
 
   render() {

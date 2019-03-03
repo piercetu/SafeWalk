@@ -16,15 +16,17 @@ export const setAddresses = (startingAddress, endingAddress) => {
                 axios.get(URL + endingAddress.split(' ').join('+') + URL_LEG)
                     .then(res2 => {
                         let location2 = res2.data.results[0].geometry.location;
-                        
+
                         dispatch({
                             type: SET_ADDRESSES,
                             payload: {
                                 startingAddress, endingAddress,
                                 startingRegion: {
-                                    ...location
+                                    latitude: location.lat,
+                                    longitude: location.lng
                                 }, endingRegion: {
-                                    ...location2
+                                    latitude: location2.lat,
+                                    longitude: location2.lng
                                 }
                             }
                         });
@@ -32,6 +34,29 @@ export const setAddresses = (startingAddress, endingAddress) => {
                     .catch(err => {
                         console.log(err);
                     });
+            })
+            .catch(err => {
+                console.log(err);
+            });
+    }
+}
+
+export const submitAddress = (startingRegion, endingAddress) => {
+    return dispatch => {
+        axios.get(URL + endingAddress.split(' ').join('+') + URL_LEG)
+            .then(res => {
+                let location = res.data.results[0].geometry.location;
+
+                dispatch({
+                    type: SET_ADDRESSES,
+                    payload: {
+                        startingRegion, 
+                        endingRegion: {
+                            latitude: location.lat,
+                            longitude: location.lng
+                        }
+                    }
+                });
             })
             .catch(err => {
                 console.log(err);
