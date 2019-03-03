@@ -2,13 +2,24 @@ import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 import MapView from 'react-native-maps';
 
-export default class App extends React.Component { 
+export default class App extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      latitude1: 37.78825,
+      longitude1: -122.4333,
+      latitude2: 37.78200,
+      longitude2: -122.4333,
+    }
+  }
+
   render() {
     return (
       <View style={styles.container}>
         <Text>Hello</Text>
-        
+
         {/* Intialize map */}
+        {/* Current view of the map */}
         <MapView
           style={styles.maps}
           initialRegion={{
@@ -19,43 +30,45 @@ export default class App extends React.Component {
           }}
         >
 
-        {/* Initialize marker 1 */}
+          {/* Initialize marker 1 */}
           <MapView.Marker
             coordinate={{
-              longitude: -122.4324, 
-              latitude: 37.78825
+              latitude: this.state.latitude1,
+              longitude: this.state.longitude1,
             }}
-            title = {'My marker title'}
-            description = {'marker description'}
+            title={'My marker title'}
+            description={'marker description'}
           />
           {/* End marker 1 */}
-    
-          {/* Intialize circle 1 */}
-          <MapView.Circle 
-            center={{
-              latitude: 37.78825,
-              longitude: -122.4324,
+
+          {/* Initialize marker 2 */}
+          <MapView.Marker
+            coordinate={{
+              latitude: this.state.latitude2,
+              longitude: this.state.longitude2,
             }}
-            radius={240}
+            title={'My marker title'}
+            description={'marker description'}
+          />
+          {/* End marker 2 */}
+
+          {/* Intialize circle 1 */}
+          <MapView.Circle
+            center={{
+              latitude: (this.state.latitude1 + this.state.latitude2) / 2,
+              longitude: (this.state.longitude1 + this.state.longitude2) / 2,
+            }}
+            radius={740}
             strokeWidth={2}
             strokeColor="#3399ff"
             fillColor="rgba(255,0,0,0.3)"
           />
           {/* End circle 1 */}
-            
-          {/* Initialize marker 2 */}
-          <MapView.Marker
-            coordinate={{
-              longitude: -122.4310, 
-              latitude: 37.78200,
-            }}
-            title = {'My marker title'}
-            description = {'marker description'}
-          />
-          {/* End marker 2 */}
+
+
 
           {/* Intialize circle 2 */}
-          <MapView.Circle 
+          {/* <MapView.Circle
             center={{
               latitude: 37.78200,
               longitude: -122.4310,
@@ -64,24 +77,21 @@ export default class App extends React.Component {
             strokeWidth={2}
             strokeColor="#3399ff"
             fillColor="rgba(255,0,0,0.3)"
-          />
+          /> */}
           {/* End circle 2 */}
 
           {/* Create polygon to cover walking distance */}
-          <MapView.Polygon
-
+          {/* <MapView.Polygon
             coordinates={[
-              { latitude: 37.8025259, longitude: -122.4351431 },
-              { latitude: 37.7896386, longitude: -122.421646 },
-              { latitude: 37.7665248, longitude: -122.4161628 },
-              { latitude: 37.7734153, longitude: -122.4577787 },
-              { latitude: 37.7948605, longitude: -122.4596065 },
-              { latitude: 37.8025259, longitude: -122.4351431 }
+              { latitude: this.state.latitude1 + 0.005, longitude: this.state.longitude1 + 0.005 },
+              { latitude: this.state.latitude1 - 0.005, longitude: this.state.longitude1 - 0.005 },
+              { latitude: this.state.latitude2 - 0.005, longitude: this.state.longitude2 - 0.005 },
+              { latitude: this.state.latitude2 + 0.005, longitude: this.state.longitude2 + 0.005 },
             ]}
             strokeWidth={2}
             strokeColor="#3399ff"
             fillColor="rgba(255,0,0,0.3)"
-          />
+          /> */}
           {/* End polygon to cover walking distance */}
 
         </MapView>
