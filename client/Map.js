@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet, Text, View, TextInput } from 'react-native';
 import MapView from 'react-native-maps';
 
 export default class Map extends React.Component {
@@ -19,7 +19,13 @@ export default class Map extends React.Component {
   render() {
     return (
       <View style={styles.container}>
-        <Text>Hello</Text>
+        {/* <Text>Hello</Text> */}
+
+        <TextInput style={styles.text}
+          style={{height: 40}}
+          placeholder = "Enter destination address."
+          onChangeText={(text) => this.setState({text})}
+        />
 
         {/* Intialize map */}
         {/* Current view of the map */}
@@ -130,15 +136,21 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
+    // alignItems: 'center',
+    // justifyContent: 'center',
   },
-  maps: {
-    borderWidth: 2,
+  // maps: {
+  //   borderWidth: 2,
+  //   position: 'absolute', 
+  //   top: 0,
+  //   left: 0,
+  //   right: 0,
+  //   bottom: 0,
+  //   zIndex: 1,
+  // },
+  text: {
     position: 'absolute',
-    top: 0,
-    left: 0,
-    right: 0,
-    bottom: 0
+    zIndex: 2,
+    top: -5,
   }
 });
