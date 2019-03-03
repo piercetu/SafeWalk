@@ -68,14 +68,29 @@ export default class App extends React.Component {
 
           {/* TEST */}
           <MapView.Marker
+            pinColor='#48962b'
+            draggable
             coordinate={{
               latitude: ((this.state.latitude1 + this.state.latitude2) / 2),
               longitude: ((this.state.longitude2 + this.state.longitude2) / 2) + 0.0078,
             }}
-            title={'My marker title'}
-            description={'marker description'}
+            title={'Dragable'}
+            description={'This marker is Dragable'}
           />
           {/* TEST */}
+
+          {/* Dragable */}
+          {/* <MapView initialRegion={{
+            latitude: ((this.state.latitude1 + this.state.latitude2) / 2),
+            longitude: ((this.state.longitude2 + this.state.longitude2) / 2) + 0.0078,
+            latitudeDelta: 0.0922,
+            longitudeDelta: 0.0421,
+          }}>
+            <Marker draggable
+              coordinate={this.state.x}
+              onDragEnd={(e) => this.setState({ x: e.nativeEvent.coordinate })}
+            />
+          </MapView> */}
 
           {/* Intialize circle 1 */}
           <MapView.Circle
