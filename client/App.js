@@ -11,6 +11,9 @@ export default class App extends React.Component {
       latitude2: 37.78200,
       longitude2: -122.4333,
     }
+
+    console.log('Latitude:', (this.state.latitude1 + this.state.latitude2) / 2);
+    console.log('Longitude:', (this.state.longitude2 + this.state.longitude2) / 2);
   }
 
   render() {
@@ -52,6 +55,28 @@ export default class App extends React.Component {
           />
           {/* End marker 2 */}
 
+          {/* Midpoint */}
+          <MapView.Marker
+            coordinate={{
+              latitude: (this.state.latitude1 + this.state.latitude2) / 2,
+              longitude: (this.state.longitude2 + this.state.longitude2) / 2,
+            }}
+            title={'My marker title'}
+            description={'marker description'}
+          />
+          {/* Midpoint */}
+
+          {/* TEST */}
+          <MapView.Marker
+            coordinate={{
+              latitude: ((this.state.latitude1 + this.state.latitude2) / 2),
+              longitude: ((this.state.longitude2 + this.state.longitude2) / 2) + 0.0078,
+            }}
+            title={'My marker title'}
+            description={'marker description'}
+          />
+          {/* TEST */}
+
           {/* Intialize circle 1 */}
           <MapView.Circle
             center={{
@@ -64,21 +89,6 @@ export default class App extends React.Component {
             fillColor="rgba(255,0,0,0.3)"
           />
           {/* End circle 1 */}
-
-
-
-          {/* Intialize circle 2 */}
-          {/* <MapView.Circle
-            center={{
-              latitude: 37.78200,
-              longitude: -122.4310,
-            }}
-            radius={240}
-            strokeWidth={2}
-            strokeColor="#3399ff"
-            fillColor="rgba(255,0,0,0.3)"
-          /> */}
-          {/* End circle 2 */}
 
           {/* Create polygon to cover walking distance */}
           {/* <MapView.Polygon
