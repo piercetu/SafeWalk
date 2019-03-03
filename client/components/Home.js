@@ -3,6 +3,7 @@ import { View, Text, Button, StyleSheet, TextInput, Image } from 'react-native';
 import AwesomeButtonRick from 'react-native-really-awesome-button/src/themes/rick';
 import FontAwesomeIcon from 'react-native-vector-icons/FontAwesome';
 import { Fumi } from 'react-native-textinput-effects';
+import KeyboardSpacer from 'react-native-keyboard-spacer';
 
 import { connect } from 'react-redux';
 import { setAddresses } from '../redux/actions/map';
@@ -63,7 +64,7 @@ class Home extends Component {
 
                 <View style={[styles.triangle,styles.arrowDown]}/>
 
-                <View style={{alignSelf: 'stretch', justifyContent: 'center', height: '60%', backgroundColor: '#E69B58', zIndex: 1}}>
+                <View style={{ height: '60%', backgroundColor: '#E69B58', zIndex: 1}}>
                     {/* <Input style={{marginBottom: 30}}
                         placeholder = "Phone Number"
                         maxLength={10}
@@ -72,9 +73,8 @@ class Home extends Component {
                     /> */}
 
 
-                    <Text style={{color: 'white', fontSize: 40, marginLeft: 70, marginRight: 70, marginBottom: 20}}>Walk safer 
-                    today.</Text>
-                    <Fumi
+                    <Text style={{ color: 'white', fontSize: 40, marginTop: 40, marginLeft: 70, marginRight: 70, marginBottom: 45 }}>Walk safer today.</Text>
+                    <Fumi style={{marginLeft: 10, marginRight: 10}}
                         label={'Phone Number'}
                         iconClass={FontAwesomeIcon}
                         iconName={'phone'}
@@ -86,8 +86,11 @@ class Home extends Component {
                         value={this.state.phone}
                         onChangeText={phone => this.setState({ phone })}
                     />
+
+                    <KeyboardSpacer/>
+ 
                     
-                    <Text> </Text>
+                    {/* <Text> </Text> */}
                     {/* <Input
                         placeholder = "Starting Address"
                         value={this.props.startingAddress}
@@ -133,7 +136,10 @@ class Home extends Component {
                     <AwesomeButtonRick type="primary" onPress={this.handleOnPress} stretch boolean="true">
                         Let's Get Started!
                     </AwesomeButtonRick>
+                    
                 </View>
+                <KeyboardSpacer/>
+                <KeyboardSpacer/>
             </View>
         );
     }
