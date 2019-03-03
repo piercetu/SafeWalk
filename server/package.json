@@ -21,6 +21,7 @@
   "dependencies": {
     "body-parser": "^1.18.3",
     "express": "^4.16.4",
+    "path": "^0.12.7",
     "twilio": "^3.29.0"
   },
   "engines": {
