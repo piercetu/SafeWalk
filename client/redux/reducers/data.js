@@ -1,4 +1,6 @@
-import { SET_PHONE } from '../actions/types';
+import axios from 'axios';
+
+import { SET_PHONE, NOTIFY_PARENT } from '../actions/types';
 
 const initialState = {
     phoneNumber: ''
@@ -11,6 +13,20 @@ export default DataReducer = (state = initialState, action) => {
                 ...state,
                 ...action.payload
             };
+        
+        case NOTIFY_PARENT: 
+            axios.put('/api/twilio/notify', {
+                parentNumber: state.phoneNumber
+            })
+                .then(res => {
+                    if (res.data.success)
+                        console.log('Successfully notified parent');
+                })
+                .catch(err => {
+                    console.log(err);
+                });
+                
+            return state;
         default:
             return state;
     }

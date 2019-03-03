@@ -6,7 +6,7 @@ const { accountSid, authToken, phoneNumber } = require('../config/twilio');
 
 const client = new twilio(accountSid, authToken);
 
-router.get('/api/twilio/notify', (req, res) => {
+router.put('/api/twilio/notify', (req, res) => {
     let { parentNumber } = req.body;
 
     try {

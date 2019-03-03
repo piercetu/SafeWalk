@@ -23,7 +23,7 @@ class Home extends Component {
           return '(' + match[1] + ') ' + match[2] + '-' + match[3];
     
         return null;
-      }
+    }
 
     handleOnPress = () => {
         let phone = formatToPhone(this.state.phone);
