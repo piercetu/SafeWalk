@@ -91,14 +91,26 @@ class Map extends React.Component {
   // Prints the distances away from the midpoint
   calcDistance = () => {
     if (this.state.location) {
+      let { startingRegion, endingRegion } = this.state;
+
+      this.setState({
+        midpoint_long: (startingRegion.longitude + endingRegion.longitude) / 2,
+        midpoint_lat: (startingRegion.latitude + endingRegion.latitude) / 2
+      });
+
       const coods = geolib.getDistanceSimple(
         { latitude: this.state.location.coords.latitude, longitude: this.state.location.coords.longitude },
         { latitude: this.state.midpoint_lat, longitude: this.state.midpoint_long }
       );
 
-      // Checks whether inside or outside
-      let RADIUS = this.state.radius;
-      if (coods < RADIUS) {
+      this.setState({
+        radius: geolib.getDistanceSimple(
+          { latitude: this.state.location.coords.latitude, longitude: this.state.location.coords.longitude },
+          { latitude: this.state.midpoint_lat, longitude: this.state.midpoint_long }
+        ) + 100
+      });
+
+      if (coods < this.state.radius) {
         console.log('INSIDE ✅');
       } else if (this.state.notifiedParent === false && coods > RADIUS) {
         console.log('OUTSIDE ❌');

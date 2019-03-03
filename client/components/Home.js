@@ -9,6 +9,7 @@ import { setAddresses } from '../redux/actions/map';
 import { setPhone } from '../redux/actions/data';
 
 import Input from './Input';
+import console = require('console');
 
 class Home extends Component {
     constructor(props) {
@@ -21,7 +22,7 @@ class Home extends Component {
     }
 
     static getDerivedStateFromProps(props, state) {
-        if (props.phoneNumber.length && props.startingRegion.latitude && props.endingRegion.latitude) {
+        if (props.phoneNumber.length) {
             return {
                 redirect: true
             };
@@ -41,18 +42,16 @@ class Home extends Component {
 
     handleOnPress = () => {
         let phone = this.formatToPhone(this.state.phone);
+        console.log(phone);
         
         if (phone !== null) {
-            this.props.setPhone('+1 ' + this.state.phone);
-            this.props.setAddresses(this.state.startingAddress, this.state.endingAddress);
+            this.props.setPhone('+1 ' + phone);
         }
     }
 
     render() {
         if (this.state.redirect) {
             this.props.navigation.navigate('Map');
-
-            return null;
         }
 
         return (
