@@ -1,16 +1,22 @@
 import React,  { Component } from 'react';
 import { View, Text, Button, StyleSheet, TextInput } from 'react-native';
 
+import { connect } from 'react-redux';
+import { setAddress } from '../redux/actions/map';
+
 import Input from './Input';
 
-export default class Home extends Component {
+class Home extends Component {
     constructor(props) {
         super(props);
         this.state = {
             phone: "",
-            startAddress: "", endAddress: "",
-            startRegion: {}, endRegion: {}
+            startingAddress: "", endingAddress: "",
         };
+    }
+
+    handleOnPress = () => {
+        
     }
 
     render() {
@@ -32,7 +38,7 @@ export default class Home extends Component {
 
                 <Button
                     title="Get Started"
-                    onPress={() => this.props.navigation.navigate('Map')}
+                    onPress={this.handleOnPress}
                 />
           </View>
         );
@@ -48,3 +54,5 @@ const styles = StyleSheet.create({
       justifyContent: 'center',
     },
 });
+
+export default connect(null, { setAddress })(Home);
