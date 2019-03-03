@@ -2,7 +2,9 @@ import React from 'react';
 import { StyleSheet, Text, View, TextInput } from 'react-native';
 import MapView from 'react-native-maps';
 
-export default class App extends React.Component {
+import { connect } from 'react-redux';
+
+class Map extends React.Component {
   constructor(props) {
     super(props);
 
@@ -110,7 +112,6 @@ export default class App extends React.Component {
   }
 }
 
-
 // Compenents Styles
 const styles = StyleSheet.create({
   container: {
@@ -126,7 +127,7 @@ const styles = StyleSheet.create({
     left: 0,
     right: 0,
     bottom: 0,
-    zIndex: 1,
+    zIndex: 1
   },
   text: {
     position: 'absolute',
@@ -134,3 +135,17 @@ const styles = StyleSheet.create({
     top: -5,
   }
 });
+
+const mapStateToProps = state => {
+  let { 
+    startingRegion, startingAddress,
+    endingRegion, endingAddress
+  } = state.map;
+
+  return {
+    startingRegion, startingAddress,
+    endingRegion, endingAddress
+  };
+}
+
+export default connect(mapStateToProps, null)(Map);
