@@ -5,7 +5,7 @@ import FontAwesomeIcon from 'react-native-vector-icons/FontAwesome';
 import { Fumi } from 'react-native-textinput-effects';
 
 import { connect } from 'react-redux';
-import { setAddress } from '../redux/actions/map';
+import { setAddresses } from '../redux/actions/map';
 import { setPhone } from '../redux/actions/data';
 
 import Input from './Input';
@@ -16,7 +16,18 @@ class Home extends Component {
         this.state = {
             phone: "",
             startingAddress: "", endingAddress: "",
+            redirect: false
         };
+    }
+
+    static getDerivedStateFromProps(props, state) {
+        if (props.phoneNumber.length && props.startingRegion.latitude && props.endingRegion.latitude) {
+            return {
+                redirect: true
+            };
+        }
+
+        return null;
     }
 
     formatToPhone = str => {
@@ -29,15 +40,21 @@ class Home extends Component {
     }
 
     handleOnPress = () => {
-        let phone = formatToPhone(this.state.phone);
+        let phone = this.formatToPhone(this.state.phone);
         
         if (phone !== null) {
             this.props.setPhone('+1 ' + this.state.phone);
-            this.props.setAddress(this.state.startingAddress, this.state.endingAddress);
+            this.props.setAddresses(this.state.startingAddress, this.state.endingAddress);
         }
     }
 
     render() {
+        if (this.state.redirect) {
+            this.props.navigation.navigate('Map');
+
+            return null;
+        }
+
         return (
             <View style={styles.container}>
                 <View style={{alignSelf: 'stretch', justifyContent: 'center', height: '40%', backgroundColor: 'white'}}>
@@ -148,4 +165,15 @@ const styles = StyleSheet.create({
     },
 });
 
-export default connect(null, { setAddress, setPhone })(Home);
+const mapStateToProps = state => {
+    let { startingRegion, endingRegion } = state.map;
+    let { phoneNumber } = state.data;
+
+    console.log(state);
+
+    return {
+        phoneNumber, startingRegion, endingRegion
+    };
+}
+
+export default connect(mapStateToProps, { setAddresses, setPhone })(Home);

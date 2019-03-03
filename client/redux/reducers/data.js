@@ -13,20 +13,7 @@ export default DataReducer = (state = initialState, action) => {
                 ...state,
                 ...action.payload
             };
-        
-        case NOTIFY_PARENT: 
-            axios.put('/api/twilio/notify', {
-                parentNumber: state.phoneNumber
-            })
-                .then(res => {
-                    if (res.data.success)
-                        console.log('Successfully notified parent');
-                })
-                .catch(err => {
-                    console.log(err);
-                });
-                
-            return state;
+
         default:
             return state;
     }
