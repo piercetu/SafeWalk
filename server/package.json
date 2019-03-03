@@ -16,5 +16,10 @@
   "bugs": {
     "url": "https://github.com/piercetu/WalkSafe/issues"
   },
-  "homepage": "https://github.com/piercetu/WalkSafe#readme"
+  "homepage": "https://github.com/piercetu/WalkSafe#readme",
+  "dependencies": {
+    "body-parser": "^1.18.3",
+    "express": "^4.16.4",
+    "twilio": "^3.29.0"
+  }
 }
