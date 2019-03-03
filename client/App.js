@@ -2,7 +2,7 @@ import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 import MapView from 'react-native-maps';
 
-export default class App extends React.Component {
+export default class App extends React.Component { 
   render() {
     return (
       <View style={styles.container}>
@@ -19,7 +19,7 @@ export default class App extends React.Component {
           }}
         >
 
-        {/* Initialize marker */}
+        {/* Initialize marker 1 */}
           <MapView.Marker
             coordinate={{
               longitude: -122.4324, 
@@ -28,9 +28,9 @@ export default class App extends React.Component {
             title = {'My marker title'}
             description = {'marker description'}
           />
-          {/* End marker */}
-
-          {/* Intialize circle */}
+          {/* End marker 1 */}
+    
+          {/* Intialize circle 1 */}
           <MapView.Circle 
             center={{
               latitude: 37.78825,
@@ -39,9 +39,51 @@ export default class App extends React.Component {
             radius={240}
             strokeWidth={2}
             strokeColor="#3399ff"
-            fillColor="#80bfff"
+            fillColor="rgba(255,0,0,0.3)"
           />
-          {/* End circle */}
+          {/* End circle 1 */}
+            
+          {/* Initialize marker 2 */}
+          <MapView.Marker
+            coordinate={{
+              longitude: -122.4310, 
+              latitude: 37.78200,
+            }}
+            title = {'My marker title'}
+            description = {'marker description'}
+          />
+          {/* End marker 2 */}
+
+          {/* Intialize circle 2 */}
+          <MapView.Circle 
+            center={{
+              latitude: 37.78200,
+              longitude: -122.4310,
+            }}
+            radius={240}
+            strokeWidth={2}
+            strokeColor="#3399ff"
+            fillColor="rgba(255,0,0,0.3)"
+          />
+          {/* End circle 2 */}
+
+          {/* Create polygon to cover walking distance */}
+          <MapView.Polygon
+
+            coordinates={[
+              { latitude: 37.8025259, longitude: -122.4351431 },
+              { latitude: 37.7896386, longitude: -122.421646 },
+              { latitude: 37.7665248, longitude: -122.4161628 },
+              { latitude: 37.7734153, longitude: -122.4577787 },
+              { latitude: 37.7948605, longitude: -122.4596065 },
+              { latitude: 37.8025259, longitude: -122.4351431 }
+            ]}
+            strokeWidth={2}
+            strokeColor="#3399ff"
+            fillColor="rgba(255,0,0,0.3)"
+          />
+          {/* End polygon to cover walking distance */}
+
         </MapView>
         {/* End map  */}
       </View>
