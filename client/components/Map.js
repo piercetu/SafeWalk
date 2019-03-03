@@ -100,8 +100,9 @@ class Map extends React.Component {
       let RADIUS = this.state.radius;
       if (coods < RADIUS) {
         console.log('INSIDE ✅');
-      } else if (notified === false && coods > RADIUS) {
+      } else if (this.state.notifiedParent === false && coods > RADIUS) {
         console.log('OUTSIDE ❌');
+        this.setState({ notifiedParent: true });
         this.notifyParent();
       } else {
         console.log('Child is still outside of the desired area');
@@ -218,7 +219,7 @@ class Map extends React.Component {
             /> */}
 
             {/* Display circle of what the child has access to */}
-            {/* <MapView.Circle
+            <MapView.Circle
               center={{
                 longitude: this.state.midpoint_long,
                 latitude: this.state.midpoint_lat,
@@ -227,7 +228,7 @@ class Map extends React.Component {
               strokeWidth={2}
               strokeColor="#3399ff"
               fillColor="rgba(255,0,0,0.3)"
-            /> */}
+            />
 
           </MapView>
           <View style={styles.inputView}>

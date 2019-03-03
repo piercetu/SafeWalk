@@ -91,8 +91,6 @@ const mapStateToProps = state => {
     let { startingRegion, endingRegion } = state.map;
     let { phoneNumber } = state.data;
 
-    console.log(state);
-
     return {
         phoneNumber, startingRegion, endingRegion
     };

@@ -9,10 +9,9 @@ const client = new twilio(accountSid, authToken);
 router.post('/api/twilio/notify', (req, res) => {
     let { parentNumber } = req.body;
 
-    console.log(req.body);
     try {
         client.messages.create({
-            body: 'Hello your child is not at school',
+            body: 'Hello from SafeWalk, your child is astray from the set location',
             to: parentNumber,
             from: phoneNumber
         })
