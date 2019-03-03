@@ -1,4 +1,4 @@
-import { SET_ADDRESSS } from '../actions/types';
+import { SET_ADDRESS } from '../actions/types';
 
 const initialState = {
     startingAddress: '', endingAddress: '',
@@ -8,3 +8,15 @@ const initialState = {
         latitude: null, longitude: null
     }
 }; 
+
+export default MapReducer = (state = initialState, action) => {
+    switch(action.type) {
+        case SET_ADDRESS: 
+            return {
+                ...state,
+                ...action.payload
+            };
+        default:
+            return state;
+    }
+}
