@@ -11,9 +11,13 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 app.use(cors());
 
-app.get("/", (req, res) => {
-  return res.render(path.join(__dirname, 'public/index.html'));
-})
+app.use(express.static('./public/static'));
+app.use(express.static('./public/resources'));
+
+app.get("/", (req,res) => {
+  res.sendFile(path.join(__dirname, 'public/index.html'));
+});
+
 app.use(routes);
 
 app.listen(PORT || 3000, () => console.log(`Server running on port ${PORT ? PORT : 3000}`));

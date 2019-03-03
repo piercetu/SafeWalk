@@ -11,7 +11,7 @@ router.post('/api/twilio/notify', (req, res) => {
 
     try {
         client.messages.create({
-            body: 'Hi. Your child has strayed from their route.',
+            body: 'Hi. Your child has strayed from their route. You might want to check up on them.',
             to: parentNumber,
             from: phoneNumber
         })

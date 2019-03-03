@@ -94,8 +94,17 @@ class Map extends React.Component {
         midpoint_lat: (startingRegion.latitude + endingRegion.latitude) / 2
       });
 
+      let twilioDemoCoords = {
+        latitude: 37.7219, longitude: 122.4782
+      };
+
+      // const coods = geolib.getDistanceSimple(
+      //   { latitude: this.state.location.coords.latitude, longitude: this.state.location.coords.longitude },
+      //   { latitude: this.state.midpoint_lat, longitude: this.state.midpoint_long }
+      // );
+
       const coods = geolib.getDistanceSimple(
-        { latitude: this.state.location.coords.latitude, longitude: this.state.location.coords.longitude },
+        { ...twilioDemoCoords },
         { latitude: this.state.midpoint_lat, longitude: this.state.midpoint_long }
       );
 
@@ -108,7 +117,7 @@ class Map extends React.Component {
 
       if (coods < this.state.radius) {
         console.log('INSIDE ✅');
-      } else if (this.state.notifiedParent === false && coods > RADIUS) {
+      } else if (this.state.notifiedParent === false && coods > this.state.radius) {
         console.log('OUTSIDE ❌');
         this.setState({ notifiedParent: true });
         this.notifyParent();
@@ -165,7 +174,7 @@ class Map extends React.Component {
             {/* Child Marker: This marker moves */}
             <MapView.Marker
               draggable
-              pinColor='#ffff00'
+              pinColor='red'
 
               coordinate={{
                 longitude,
@@ -186,19 +195,19 @@ class Map extends React.Component {
             />
 
             {/* Desitation Marker: Static point */}
-            { this.state.startingRegion.latitude ? <MapView.Marker
-              pinColor='red'
+            {/* { this.state.startingRegion.latitude ? <MapView.Marker
+              pinColor='blue'
               coordinate={{
                 longitude: this.state.startingRegion.longitude,
                 latitude: this.state.startingRegion.latitude,
               }}
               title={'Starting Marker'}
               description={'This marker does not move, where the child will start from'}
-            /> : null }
+            /> : null } */}
 
             { this.state.endingRegion.latitude ?
             <MapView.Marker
-              pinColor='red'
+              pinColor='blue'
               coordinate={{
                 longitude: this.state.endingRegion.longitude,
                 latitude: this.state.endingRegion.latitude,
@@ -235,8 +244,8 @@ class Map extends React.Component {
               }}
               radius={this.state.radius}
               strokeWidth={2}
-              strokeColor="white"
-              fillColor="#F2994A"
+              strokeColor="#F2994A"
+              fillColor="rgba(242,153,74,0.3)"
             />
 
           </MapView>
@@ -281,7 +290,7 @@ const styles = StyleSheet.create({
     width: '80%',
     top: '0%',
     left: '10%',
-    color: '#ff66b4',
+    color: 'black',
     backgroundColor: '#FFFFFF',
     height: 70,
     fontSize: 20,

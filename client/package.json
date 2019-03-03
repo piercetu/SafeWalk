@@ -16,6 +16,7 @@
     "react-native-firebase": "^5.2.3",
     "react-native-maps": "^0.23.0",
     "react-native-really-awesome-button": "^1.4.0",
+    "react-native-spinkit": "^1.1.1",
     "react-native-textinput-effects": "^0.5.1",
     "react-navigation": "^3.3.2",
     "react-redux": "^6.0.1",
