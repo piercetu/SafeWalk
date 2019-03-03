@@ -1,5 +1,8 @@
 import React,  { Component } from 'react';
-import { View, Text, Button, StyleSheet, TextInput } from 'react-native';
+import { View, Text, Button, StyleSheet, TextInput, Image } from 'react-native';
+import AwesomeButtonRick from 'react-native-really-awesome-button/src/themes/rick';
+import FontAwesomeIcon from 'react-native-vector-icons/FontAwesome';
+import { Fumi } from 'react-native-textinput-effects';
 
 import { connect } from 'react-redux';
 import { setAddresses } from '../redux/actions/map';
@@ -54,25 +57,86 @@ class Home extends Component {
 
         return (
             <View style={styles.container}>
-                <Input
-                    placeholder = "Phone Number"
-                    maxLength={10}
-                    onChangeText={phone => this.setState({phone})}
-                />
-                <Input
-                    placeholder = "Starting Address"
-                    onChangeText={startingAddress => this.setState({startingAddress})}
-                />
-                <Input
-                    placeholder = "Ending Address"
-                    onChangeText={endingAddress => this.setState({endingAddress})}
-                />
+                <View style={{alignSelf: 'stretch', justifyContent: 'center', height: '40%', backgroundColor: 'white'}}>
+                    <Image style={{  }}
+                        source={require('../resources/logo.png')}
+                    />
+                </View>
 
-                <Button
-                    title="Get Started"
-                    onPress={this.handleOnPress}
-                />
-          </View>
+                <View style={[styles.triangle,styles.arrowDown]}/>
+
+                <View style={{alignSelf: 'stretch', justifyContent: 'center', height: '60%', backgroundColor: '#E69B58', zIndex: 1}}>
+                    {/* <Input style={{marginBottom: 30}}
+                        placeholder = "Phone Number"
+                        maxLength={10}
+                        value={this.props.phone}
+                        onChangeText={phone => this.setState({phone})}
+                    /> */}
+
+
+                    <Text style={{color: 'white', fontSize: 40, marginLeft: 50, marginRight: 50, marginBottom: 20}}>Walk safer 
+                    today.</Text>
+                    <Fumi
+                        label={'Phone Number'}
+                        iconClass={FontAwesomeIcon}
+                        iconName={'phone'}
+                        iconColor={'#f95a25'}
+                        iconSize={20}
+                        iconWidth={40}
+                        inputPadding={16}
+                        maxLength={10}
+                        value={this.props.phone}
+                        onChangeText={phone => this.setState({phone})}
+                    />
+                    
+                    <Text> </Text>
+                    {/* <Input
+                        placeholder = "Starting Address"
+                        value={this.props.startingAddress}
+                        onChangeText={startingAddress => this.setState({startingAddress})}
+                    /> */}
+                    {/* <Fumi
+                        label={'Starting Address'}
+                        iconClass={FontAwesomeIcon}
+                        iconName={'address-card'}
+                        iconColor={'#f95a25'}
+                        iconSize={20}
+                        iconWidth={40}
+                        inputPadding={16}
+                        value={this.props.startingAddress}
+                        onChangeText={startingAddress => this.setState({startingAddress})}
+                    /> */}
+                    <Text> </Text>
+                    {/* <Input
+                        placeholder = "Ending Address"
+                        value={this.props.endingAddress}
+                        onChangeText={endingAddress => this.setState({endingAddress})}
+                    /> */}
+                    {/* <Fumi
+                        label={'Address'}
+                        iconClass={FontAwesomeIcon}
+                        iconName={'address-card'}
+                        iconColor={'#f95a25'}
+                        iconSize={20}
+                        iconWidth={40}
+                        inputPadding={16}
+                        value={this.props.endingAddress}
+                        onChangeText={endingAddress => this.setState({endingAddress})}
+                    /> */}
+
+                    <Text> </Text>
+                    <Text> </Text>
+
+                    {/* <Button
+                        title="Get Started"
+                        onPress={this.handleOnPress}
+                    /> */}
+
+                    <AwesomeButtonRick type="primary" onPress={this.handleOnPress} stretch boolean="true">
+                        Let's Get Started!
+                    </AwesomeButtonRick>
+                </View>
+            </View>
         );
     }
 }
@@ -82,8 +146,22 @@ const styles = StyleSheet.create({
     container: {
       flex: 1,
       backgroundColor: '#fff',
-      alignItems: 'center',
+    //   alignItems: 'center',
       justifyContent: 'center',
+    },
+    arrowDown: {
+        borderTopWidth: 30,
+        borderRightWidth: 30,
+        borderBottomWidth: 0,
+        borderLeftWidth: 30,
+        borderTopColor: "white",
+        borderRightColor: 'transparent',
+        borderBottomColor: 'transparent',
+        borderLeftColor: 'transparent',
+        position: 'absolute',
+        zIndex: 500,
+        height: '20%',
+        left: '70%',
     },
 });
 

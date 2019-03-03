@@ -13,7 +13,7 @@ import configureStore from './redux/configureStore';
 const Nav = createAppContainer(
   createStackNavigator({
     Home: { screen: Home }, 
-    Map: {screen: Map}
+    Map: { screen: Map } 
   })
 )
 

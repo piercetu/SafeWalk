@@ -51,6 +51,6 @@ const styles = {
     containerStyle:{
         height: 40,
         flexDirection: 'row',
-        alignItems: 'left'
+        // alignItems: 'left'
     }
 };
