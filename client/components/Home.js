@@ -9,7 +9,6 @@ import { setAddresses } from '../redux/actions/map';
 import { setPhone } from '../redux/actions/data';
 
 import Input from './Input';
-import console = require('console');
 
 class Home extends Component {
     constructor(props) {
@@ -84,8 +83,8 @@ class Home extends Component {
                         iconWidth={40}
                         inputPadding={16}
                         maxLength={10}
-                        value={this.props.phone}
-                        onChangeText={phone => this.setState({phone})}
+                        value={this.state.phone}
+                        onChangeText={phone => this.setState({ phone })}
                     />
                     
                     <Text> </Text>

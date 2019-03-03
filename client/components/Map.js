@@ -33,11 +33,7 @@ class Map extends React.Component {
       // latitude2: 37.78200,
       midpoint_long: 0,
       midpoint_lat: 0,
-      startingRegion: {
-        latitude: 0, longitude: 0
-      }, endingRegion: {
-        latitude: 0, longitude: 0
-      }, 
+      startingRegion: null, endingRegion: null,
       location: null,
       phoneNumber: '',
       notifiedParent: false,
@@ -190,25 +186,26 @@ class Map extends React.Component {
             />
 
             {/* Desitation Marker: Static point */}
-            <MapView.Marker
-              pinColor='#006eff'
+            { this.state.startingRegion.latitude ? <MapView.Marker
+              pinColor='red'
               coordinate={{
                 longitude: this.state.startingRegion.longitude,
                 latitude: this.state.startingRegion.latitude,
               }}
-              title={'Desitation Marker'}
-              description={'This marker does not move, the child maker should go here'}
-            />
+              title={'Starting Marker'}
+              description={'This marker does not move, where the child will start from'}
+            /> : null }
 
+            { this.state.endingRegion.latitude ?
             <MapView.Marker
-              pinColor='#006eff'
+              pinColor='red'
               coordinate={{
                 longitude: this.state.endingRegion.longitude,
                 latitude: this.state.endingRegion.latitude,
               }}
               title={'Desitation Marker'}
               description={'This marker does not move, the child maker should go here'}
-            />
+            /> : null }
             {/* DEBUG MIDPOINT */}
             {/* <MapView.Marker
               coordinate={{
@@ -238,8 +235,8 @@ class Map extends React.Component {
               }}
               radius={this.state.radius}
               strokeWidth={2}
-              strokeColor="#3399ff"
-              fillColor="rgba(255,0,0,0.3)"
+              strokeColor="white"
+              fillColor="#F2994A"
             />
 
           </MapView>
