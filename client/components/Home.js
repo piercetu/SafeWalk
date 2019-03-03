@@ -73,7 +73,7 @@ class Home extends Component {
                     /> */}
 
 
-                    <Text style={{color: 'white', fontSize: 40, marginLeft: 50, marginRight: 50, marginBottom: 20}}>Walk safer 
+                    <Text style={{color: 'white', fontSize: 40, marginLeft: 70, marginRight: 70, marginBottom: 20}}>Walk safer 
                     today.</Text>
                     <Fumi
                         label={'Phone Number'}
