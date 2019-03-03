@@ -3,7 +3,9 @@ import { StyleSheet, Text, View } from 'react-native';
 import MapView from 'react-native-maps';
 import geolib from 'geolib'
 
-export default class App extends React.Component {
+import { connect } from 'react-redux';
+
+class Map extends React.Component {
   constructor(props) {
     super(props);
 
@@ -143,7 +145,6 @@ export default class App extends React.Component {
   }
 }
 
-
 // Compenents Styles
 const styles = StyleSheet.create({
   container: {
@@ -160,3 +161,17 @@ const styles = StyleSheet.create({
     bottom: 0
   }
 });
+
+const mapStateToProps = state => {
+  let { 
+    startingRegion, startingAddress,
+    endingRegion, endingAddress
+  } = state.map;
+
+  return {
+    startingRegion, startingAddress,
+    endingRegion, endingAddress
+  };
+}
+
+export default connect(mapStateToProps, null)(Map);

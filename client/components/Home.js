@@ -2,7 +2,7 @@ import React,  { Component } from 'react';
 import { View, Text, Button, StyleSheet, TextInput } from 'react-native';
 
 import { connect } from 'react-redux';
-import { setAddress } from '../redux/actions/map';
+import { setAddresses } from '../redux/actions/map';
 import { setPhone } from '../redux/actions/data';
 
 import Input from './Input';
@@ -13,7 +13,18 @@ class Home extends Component {
         this.state = {
             phone: "",
             startingAddress: "", endingAddress: "",
+            redirect: false
         };
+    }
+
+    static getDerivedStateFromProps(props, state) {
+        if (props.phoneNumber.length || props.startingAddress || props.endingAddress) {
+            return {
+                redirect: true
+            };
+        }
+
+        return null;
     }
 
     formatToPhone = str => {
@@ -26,15 +37,21 @@ class Home extends Component {
     }
 
     handleOnPress = () => {
-        let phone = formatToPhone(this.state.phone);
+        let phone = this.formatToPhone(this.state.phone);
         
         if (phone !== null) {
             this.props.setPhone('+1 ' + this.state.phone);
-            this.props.setAddress(this.state.startingAddress, this.state.endingAddress);
+            this.props.setAddresses(this.state.startingAddress, this.state.endingAddress);
         }
     }
 
     render() {
+        if (this.state.redirect) {
+            this.props.navigation.navigate('Map');
+
+            return null;
+        }
+
         return (
             <View style={styles.container}>
                 <Input
@@ -73,4 +90,13 @@ const styles = StyleSheet.create({
     },
 });
 
-export default connect(null, { setAddress, setPhone })(Home);
+const mapStateToProps = state => {
+    let { startingAddress, endingAddress } = state.map;
+    let { phoneNumber } = state.data;
+
+    return {
+        phoneNumber, startingAddress, endingAddress
+    };
+}
+
+export default connect(mapStateToProps, { setAddresses, setPhone })(Home);
