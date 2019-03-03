@@ -8,6 +8,7 @@ export default class App extends React.Component {
       <View style={styles.container}>
         <Text>Hello</Text>
         
+        {/* Intialize map */}
         <MapView
           style={styles.maps}
           initialRegion={{
@@ -17,6 +18,8 @@ export default class App extends React.Component {
             longitudeDelta: 0.0421,
           }}
         >
+
+        {/* Initialize marker */}
           <MapView.Marker
             coordinate={{
               longitude: -122.4324, 
@@ -25,7 +28,22 @@ export default class App extends React.Component {
             title = {'My marker title'}
             description = {'marker description'}
           />
+          {/* End marker */}
+
+          {/* Intialize circle */}
+          <MapView.Circle 
+            center={{
+              latitude: 37.78825,
+              longitude: -122.4324,
+            }}
+            radius={240}
+            strokeWidth={2}
+            strokeColor="#3399ff"
+            fillColor="#80bfff"
+          />
+          {/* End circle */}
         </MapView>
+        {/* End map  */}
       </View>
     );
   }

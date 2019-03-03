@@ -1,9 +1,9 @@
 {
   "expoServerPort": 19000,
-  "expoServerNgrokUrl": "https://9h-qis.anonymous.ambulove.exp.direct",
-  "packagerNgrokUrl": "https://packager.9h-qis.anonymous.ambulove.exp.direct",
-  "ngrokPid": 64014,
+  "expoServerNgrokUrl": "https://9h-qis.anonymous.safewalk.exp.direct",
+  "packagerNgrokUrl": "https://packager.9h-qis.anonymous.safewalk.exp.direct",
+  "ngrokPid": 67154,
   "devToolsPort": 19002,
   "packagerPort": 19003,
-  "packagerPid": 63932
+  "packagerPid": 67143
 }
