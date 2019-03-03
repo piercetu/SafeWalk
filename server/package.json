@@ -1,0 +1,20 @@
+{
+  "name": "server",
+  "version": "1.0.0",
+  "description": "Server for WalkSafe",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"No test specified\\n\"",
+    "dev": "node app.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/piercetu/WalkSafe.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/piercetu/WalkSafe/issues"
+  },
+  "homepage": "https://github.com/piercetu/WalkSafe#readme"
+}
