@@ -83,9 +83,8 @@ class Home extends Component {
                         iconWidth={40}
                         inputPadding={16}
                         maxLength={10}
-                        value={this.props.phone}
-                        onChangeText={phone => this.setState({phone})}
-                        
+                        value={this.state.phone}
+                        onChangeText={phone => this.setState({ phone })}
                     />
 
                     <KeyboardSpacer/>

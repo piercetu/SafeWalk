@@ -28,6 +28,10 @@ export default class App extends React.Component {
     console.disableYellowBox = true;
   }
 
+  componentDidMount() {
+    this.persistor.purge();
+  }
+
   render() {
     return (
       <Provider store={this.store}>
