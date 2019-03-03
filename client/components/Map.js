@@ -91,17 +91,30 @@ class Map extends React.Component {
   // Prints the distances away from the midpoint
   calcDistance = () => {
     if (this.state.location) {
+      let { startingRegion, endingRegion } = this.state;
+
+      this.setState({
+        midpoint_long: (startingRegion.longitude + endingRegion.longitude) / 2,
+        midpoint_lat: (startingRegion.latitude + endingRegion.latitude) / 2
+      });
+
       const coods = geolib.getDistanceSimple(
         { latitude: this.state.location.coords.latitude, longitude: this.state.location.coords.longitude },
         { latitude: this.state.midpoint_lat, longitude: this.state.midpoint_long }
       );
 
-      // Checks whether inside or outside
-      let RADIUS = this.state.radius;
-      if (coods < RADIUS) {
+      this.setState({
+        radius: geolib.getDistanceSimple(
+          { latitude: this.state.location.coords.latitude, longitude: this.state.location.coords.longitude },
+          { latitude: this.state.midpoint_lat, longitude: this.state.midpoint_long }
+        ) + 100
+      });
+
+      if (coods < this.state.radius) {
         console.log('INSIDE ✅');
-      } else if (notified === false && coods > RADIUS) {
+      } else if (this.state.notifiedParent === false && coods > RADIUS) {
         console.log('OUTSIDE ❌');
+        this.setState({ notifiedParent: true });
         this.notifyParent();
       } else {
         console.log('Child is still outside of the desired area');
@@ -218,7 +231,7 @@ class Map extends React.Component {
             /> */}
 
             {/* Display circle of what the child has access to */}
-            {/* <MapView.Circle
+            <MapView.Circle
               center={{
                 longitude: this.state.midpoint_long,
                 latitude: this.state.midpoint_lat,
@@ -227,7 +240,7 @@ class Map extends React.Component {
               strokeWidth={2}
               strokeColor="#3399ff"
               fillColor="rgba(255,0,0,0.3)"
-            /> */}
+            />
 
           </MapView>
           <View style={styles.inputView}>

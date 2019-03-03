@@ -7,7 +7,6 @@ const URL = 'https://maps.googleapis.com/maps/api/geocode/json?address=';
 const URL_LEG = `&key=${MAPS_API_KEY}`;
 
 export const setAddresses = (startingAddress, endingAddress) => {
-    console.log(URL + startingAddress.split(' ').join('+') + URL_LEG);
     return dispatch => {
         axios.get(URL + startingAddress.split(' ').join('+') + URL_LEG)
             .then(res => {

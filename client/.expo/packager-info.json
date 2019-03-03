@@ -1,9 +1,9 @@
 {
   "devToolsPort": 19002,
-  "expoServerPort": 19000,
-  "packagerPort": 19005,
-  "packagerPid": 77788,
-  "expoServerNgrokUrl": "https://f8-jxf.anonymous.client.exp.direct",
-  "packagerNgrokUrl": "https://packager.f8-jxf.anonymous.client.exp.direct",
-  "ngrokPid": 77803
+  "expoServerPort": null,
+  "packagerPort": null,
+  "packagerPid": null,
+  "expoServerNgrokUrl": null,
+  "packagerNgrokUrl": null,
+  "ngrokPid": null
 }
